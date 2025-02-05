@@ -22,7 +22,7 @@
   "author": "Semih Turan",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/semih-turan/gigify-shared"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -39,7 +39,10 @@
   },
   "types": "./src/index.d.ts",
   "dependencies": {
+    "@elastic/elasticsearch": "^8.17.0",
+    "cloudinary": "^2.5.1",
     "express": "^4.21.2",
+    "mongoose": "^8.9.7",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
