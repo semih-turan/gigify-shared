@@ -70,3 +70,4 @@ export {
   ICertificate,
   ISellerDocument,
 } from './seller.interface';
+export { uploads, videoUploads } from '../cloudinary-upload';
