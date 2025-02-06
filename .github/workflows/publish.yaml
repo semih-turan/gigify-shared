@@ -4,6 +4,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -15,12 +16,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com/' # Bunu ekleyerek npm publish'i doğru yönlendiriyoruz
+
       - run: npm install
       - run: npm run build
+
       - run: |
-          echo @semih-turan:https://npm.pkg.github.com/ > build/.npmrc
-          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> build/.npmrc
+          echo "@semih-turan:registry=https://npm.pkg.github.com/" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
+
       - run: npm publish
-        working-directory: ./build
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
